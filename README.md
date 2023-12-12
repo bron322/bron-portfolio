@@ -9,8 +9,6 @@
 
 ---
 
-### Section 1: Introduction
-
 Welcome to my portfolio website, where I've applied the valuable insights and skills gained from the JavaScript Mastery YouTube channel. As a dedicated learner and aspiring developer, I've meticulously crafted this space to showcase my journey and highlight the projects that reflect my evolving proficiency in Three.js and web development. Each project serves as a testament to my commitment to continuous learning and application of best practices.
 
 My portfolio website can be found [here](https://lebronlim-portfolio.vercel.app/)
