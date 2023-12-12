@@ -26,6 +26,7 @@ import githubblack from "./tech/githubblack.png";
 import angular from "./tech/angular.png";
 import bootstrap from "./tech/bootstrap.png";
 import java from "./tech/java.png";
+import linkedin from "./tech/linkedin.png";
 
 import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
@@ -50,6 +51,7 @@ export {
   mobile,
   web,
   github,
+  linkedin,
   menu,
   close,
   css,

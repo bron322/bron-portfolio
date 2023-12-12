@@ -7,6 +7,8 @@ import {
     typescript,
     html,
     css,
+    github,
+    linkedin,
     reactjs,
     tailwind,
     nodejs,
@@ -35,10 +37,29 @@ import {
       title: "Work",
     },
     {
+      id: "projects",
+      title: "Projects"
+    },
+    {
       id: "contact",
       title: "Contact",
     },
   ];
+
+  const socials = [
+    {
+      title: "github",
+      link: "https://github.com/bron322",
+      icon: github,
+      color: "#000000"
+    },
+    {
+      title: "linkedin",
+      link: "https://www.linkedin.com/in/limjingjie322/",
+      icon: linkedin,
+      color: "#0072b1"
+    },
+  ]
   
   const services = [
     {
@@ -269,4 +290,4 @@ import {
     },
   ];
   
-  export { services, technologies, experiences, projects };
+  export { services, technologies, experiences, projects, socials };
