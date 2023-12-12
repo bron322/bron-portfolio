@@ -132,7 +132,7 @@ import {
       company_name: "S-Lab for Advanced Intelligence | NTU, Singapore",
       icon: ntu,
       iconBg: "#E6DEDD",
-      date: "Jan 2021 - Feb 2022",
+      date: "October 2023 - Present",
       points: [
         "Proficiency in translating and adapting machine learning code and content from Chinese to English",
         "Facilitate in knowledge transfer and collaboration between Chinese and English-speaking communities",
@@ -143,7 +143,7 @@ import {
       company_name: "National Institute of Education, Singapore",
       icon: nie,
       iconBg: "#383E56",
-      date: "Jan 2022 - Jan 2023",
+      date: "December 2023 - Present",
       points: [
         "Focused on capturing students' emotions during reading and note-taking activities.",
         "Led the design and implementation of an intuitive and user-friendly interface for the emotion analytics tool.",
