@@ -8,21 +8,21 @@ import {
     html,
     css,
     reactjs,
-    redux,
     tailwind,
     nodejs,
     mongodb,
-    git,
     figma,
-    docker,
-    meta,
-    starbucks,
-    tesla,
-    shopify,
-    carrent,
+    ntu,
+    nie,
+    reelraves,
+    vifitness,
+    fypsystem,
+    nbaplayer,
     jobit,
-    tripguide,
     threejs,
+    python,
+    java,
+    githubblack,
   } from "../assets";
   
   export const navLinks = [
@@ -54,7 +54,7 @@ import {
       icon: backend,
     },
     {
-      title: "Content Creator",
+      title: "Data Scientist",
       icon: creator,
     },
   ];
@@ -81,10 +81,6 @@ import {
       icon: reactjs,
     },
     {
-      name: "Redux Toolkit",
-      icon: redux,
-    },
-    {
       name: "Tailwind CSS",
       icon: tailwind,
     },
@@ -101,106 +97,79 @@ import {
       icon: threejs,
     },
     {
-      name: "git",
-      icon: git,
-    },
-    {
       name: "figma",
       icon: figma,
     },
     {
-      name: "docker",
-      icon: docker,
+      name:"Python",
+      icon: python
+    },
+    {
+      name:"Java",
+      icon: java
+    },
+    {
+      name: "github",
+      icon: githubblack
     },
   ];
   
   const experiences = [
     {
-      title: "React.js Developer",
-      company_name: "Starbucks",
-      icon: starbucks,
+      title: "Student",
+      company_name: "Nanyang Technological University, Singapore",
+      icon: ntu,
       iconBg: "#383E56",
-      date: "March 2020 - April 2021",
+      date: "August 2022 - Present",
       points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
+        "Pursuing Bachelor Degree of Science in Data Science and Artificial Intelligence.",
+        "Expected Honours(Highest Distinction), Current CGPA: 4.52/5.00",
+        "Relevant courses: Data Structures & Algorithm, Software Engineering, Algorithm Design and Analysis",
       ],
     },
     {
-      title: "React Native Developer",
-      company_name: "Tesla",
-      icon: tesla,
+      title: "Data Transcriber, Intern",
+      company_name: "S-Lab for Advanced Intelligence | NTU, Singapore",
+      icon: ntu,
       iconBg: "#E6DEDD",
       date: "Jan 2021 - Feb 2022",
       points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
+        "Proficiency in translating and adapting machine learning code and content from Chinese to English",
+        "Facilitate in knowledge transfer and collaboration between Chinese and English-speaking communities",
       ],
     },
     {
-      title: "Web Developer",
-      company_name: "Shopify",
-      icon: shopify,
+      title: "Software Engineer, Intern",
+      company_name: "National Institute of Education, Singapore",
+      icon: nie,
       iconBg: "#383E56",
       date: "Jan 2022 - Jan 2023",
       points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
+        "Focused on capturing students' emotions during reading and note-taking activities.",
+        "Led the design and implementation of an intuitive and user-friendly interface for the emotion analytics tool.",
+        "Ensured seamless integration with Knowledge Forum's existing platform.",
       ],
     },
-    {
-      title: "Full stack Developer",
-      company_name: "Meta",
-      icon: meta,
-      iconBg: "#E6DEDD",
-      date: "Jan 2023 - Present",
-      points: [
-        "Developing and maintaining web applications using React.js and other related technologies.",
-        "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-        "Implementing responsive design and ensuring cross-browser compatibility.",
-        "Participating in code reviews and providing constructive feedback to other developers.",
-      ],
-    },
-  ];
-  
-  const testimonials = [
-    {
-      testimonial:
-        "I thought it was impossible to make a website as beautiful as our product, but Rick proved me wrong.",
-      name: "Sara Lee",
-      designation: "CFO",
-      company: "Acme Co",
-      image: "https://randomuser.me/api/portraits/women/4.jpg",
-    },
-    {
-      testimonial:
-        "I've never met a web developer who truly cares about their clients' success like Rick does.",
-      name: "Chris Brown",
-      designation: "COO",
-      company: "DEF Corp",
-      image: "https://randomuser.me/api/portraits/men/5.jpg",
-    },
-    {
-      testimonial:
-        "After Rick optimized our website, our traffic increased by 50%. We can't thank them enough!",
-      name: "Lisa Wang",
-      designation: "CTO",
-      company: "456 Enterprises",
-      image: "https://randomuser.me/api/portraits/women/6.jpg",
-    },
+    // {
+    //   title: "Full stack Developer",
+    //   company_name: "Meta",
+    //   icon: meta,
+    //   iconBg: "#E6DEDD",
+    //   date: "Jan 2023 - Present",
+    //   points: [
+    //     "Developing and maintaining web applications using React.js and other related technologies.",
+    //     "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
+    //     "Implementing responsive design and ensuring cross-browser compatibility.",
+    //     "Participating in code reviews and providing constructive feedback to other developers.",
+    //   ],
+    // },
   ];
   
   const projects = [
     {
-      name: "Car Rent",
+      name: "VI Fitness",
       description:
-        "Web-based platform that allows users to search, book, and manage car rentals from various providers, providing a convenient and efficient solution for transportation needs.",
+        "Developed a comprehensive web application designed to automate generation of personalized workout plans and facilitate tracking of daily calories intake.",
       tags: [
         {
           name: "react",
@@ -211,55 +180,93 @@ import {
           color: "green-text-gradient",
         },
         {
-          name: "tailwind",
+          name: "express.js",
           color: "pink-text-gradient",
         },
-      ],
-      image: carrent,
-      source_code_link: "https://github.com/",
-    },
-    {
-      name: "Job IT",
-      description:
-        "Web application that enables users to search for job openings, view estimated salary ranges for positions, and locate available jobs based on their current location.",
-      tags: [
         {
-          name: "react",
+          name: "three.js",
           color: "blue-text-gradient",
         },
         {
-          name: "restapi",
+          name: "node.js",
+          color: "green-text-gradient",
+        },
+      ],
+      image: vifitness,
+      source_code_link: "https://github.com/bron322/SC2006VIFitness",
+    },
+    {
+      name: "Emotion Analytics",
+      description:
+        "Innovative tool captures and analyzes students' emotions as they engage with study materials, read, and take notes.The software facilitates a nuanced analysis of emotional nuances, contributing to the enhancement of educational strategies and creating a more personalized and effective learning environment.",
+      tags: [
+        {
+          name: "angular",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "mongodb",
           color: "green-text-gradient",
         },
         {
           name: "scss",
           color: "pink-text-gradient",
         },
+        {
+          name: "typescript",
+          color: "blue-text-gradient",
+        },
       ],
       image: jobit,
       source_code_link: "https://github.com/",
     },
     {
-      name: "Trip Guide",
+      name: "Reel Raves",
       description:
-        "A comprehensive travel booking platform that allows users to book flights, hotels, and rental cars, and offers curated recommendations for popular destinations.",
+        "The Reel Raves Angular project is a dynamic and user-friendly movie reviewing website that I designed and developed using Angular. This platform invites movie enthusiasts to explore and share their opinions on a diverse range of films. Users can easily navigate through the site, discover new movies, and contribute their reviews, creating an engaging community of film enthusiasts.",
       tags: [
         {
-          name: "nextjs",
+          name: "angular",
           color: "blue-text-gradient",
         },
         {
-          name: "supabase",
+          name: "scss",
           color: "green-text-gradient",
         },
         {
-          name: "css",
+          name: "html",
           color: "pink-text-gradient",
         },
       ],
-      image: tripguide,
-      source_code_link: "https://github.com/",
+      image: reelraves,
+      source_code_link: "https://github.com/bron322/AngularMovieReview",
+    },
+    {
+      name: "FYPSystem",
+      description:
+        "An academic management application, the FYPSystem, serves as a comprehensive platform for both students and professors engaged in the Final Year Project (FYP) process. This system offers a range of features, including streamlined management of project proposals and progress tracking",
+      tags: [
+        {
+          name: "java",
+          color: "blue-text-gradient",
+        },
+      ],
+      image: fypsystem,
+      source_code_link: "https://github.com/bron322/SC2002FYPSystem",
+    },
+    {
+      name: "NBAPlayerHoFPrediction",
+      description:
+        "Utilizing a diverse set of machine learning algorithms, including linear regression, XGBoost, k-nearest neighbors, and the random forest classifier, this project focuses on predicting NBA Hall of Fame (NBAHoF) players.",
+      tags: [
+        {
+          name: "python",
+          color: "blue-text-gradient",
+        },
+      ],
+      image: nbaplayer,
+      source_code_link: "https://github.com/bron322/NBAPlayersHoFPrediction",
     },
   ];
   
-  export { services, technologies, experiences, testimonials, projects };
+  export { services, technologies, experiences, projects };

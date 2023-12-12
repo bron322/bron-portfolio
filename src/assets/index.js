@@ -21,15 +21,26 @@ import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
+import python from "./tech/python.png";
+import githubblack from "./tech/githubblack.png";
+import angular from "./tech/angular.png";
+import bootstrap from "./tech/bootstrap.png";
+import java from "./tech/java.png";
 
 import meta from "./company/meta.png";
 import shopify from "./company/shopify.png";
 import starbucks from "./company/starbucks.png";
 import tesla from "./company/tesla.png";
+import ntu from "./company/ntu.png";
+import nie from "./company/nie.png";
 
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
+import vifitness from "./vifitness.jpg";
+import reelraves from "./reelraves.png";
+import fypsystem from "./fypsystem.jpg";
+import nbaplayer from "./nbaplayer.jpg";
 
 export {
   logo,
@@ -61,4 +72,15 @@ export {
   carrent,
   jobit,
   tripguide,
+  angular,
+  bootstrap,
+  githubblack,
+  python,
+  java,
+  ntu,
+  nie,
+  vifitness,
+  reelraves,
+  fypsystem,
+  nbaplayer,
 };
