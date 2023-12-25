@@ -42,6 +42,10 @@ import vifitness from "./vifitness.jpg";
 import reelraves from "./reelraves.png";
 import fypsystem from "./fypsystem.jpg";
 import nbaplayer from "./nbaplayer.jpg";
+import hungerdash from "./hungerdash.png";
+import jobninja from "./jobninja.png";
+import bearbrickfusion from "./bearbrickfusion.jpg";
+import emotion from "./emotion.png";
 
 export {
   logo,
@@ -85,4 +89,8 @@ export {
   reelraves,
   fypsystem,
   nbaplayer,
+  hungerdash,
+  jobninja,
+  bearbrickfusion,
+  emotion,
 };

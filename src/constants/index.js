@@ -25,6 +25,10 @@ import {
     python,
     java,
     githubblack,
+    hungerdash,
+    jobninja,
+    emotion,
+    bearbrickfusion,
   } from "../assets";
   
   export const navLinks = [
@@ -171,19 +175,6 @@ import {
         "Ensured seamless integration with Knowledge Forum's existing platform.",
       ],
     },
-    // {
-    //   title: "Full stack Developer",
-    //   company_name: "Meta",
-    //   icon: meta,
-    //   iconBg: "#E6DEDD",
-    //   date: "Jan 2023 - Present",
-    //   points: [
-    //     "Developing and maintaining web applications using React.js and other related technologies.",
-    //     "Collaborating with cross-functional teams including designers, product managers, and other developers to create high-quality products.",
-    //     "Implementing responsive design and ensuring cross-browser compatibility.",
-    //     "Participating in code reviews and providing constructive feedback to other developers.",
-    //   ],
-    // },
   ];
   
   const projects = [
@@ -219,7 +210,7 @@ import {
     {
       name: "Emotion Analytics",
       description:
-        "Innovative tool captures and analyzes students' emotions as they engage with study materials, read, and take notes.The software facilitates a nuanced analysis of emotional nuances, contributing to the enhancement of educational strategies and creating a more personalized and effective learning environment.",
+        "Innovative tool captures and analyzes students' emotions as they engage with study materials, read, and take notes.The software facilitates a nuanced analysis of emotional nuances, contributing to the enhancement of educational strategies and learning environment.",
       tags: [
         {
           name: "angular",
@@ -238,8 +229,50 @@ import {
           color: "blue-text-gradient",
         },
       ],
-      image: jobit,
+      image: emotion,
       source_code_link: "https://github.com/",
+    },
+    {
+      name: "HungerDash",
+      description:
+        "HungerDash is a mobile food delivery application built with React Native and Expo. This app provides a seamless and user-friendly experience for customers to explore a variety of dishes, place orders, and have their favorite meals delivered to their doorstep.",
+      tags: [
+        {
+          name: "react-native",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "javascript",
+          color: "green-text-gradient",
+        },
+        {
+          name: "expo",
+          color: "pink-text-gradient",
+        },
+      ],
+      image: hungerdash,
+      source_code_link: "https://github.com/bron322/HungerDash",
+    },
+    {
+      name: "Job Ninja",
+      description:
+        "Your go-to mobile app for a seamless and efficient job search experience. Whether you're a recent graduate, a seasoned professional, or someone exploring new career opportunities, JobNinja is here to simplify your job-hunting journey.",
+      tags: [
+        {
+          name: "react-native",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "javascript",
+          color: "green-text-gradient",
+        },
+        {
+          name: "expo",
+          color: "pink-text-gradient",
+        },
+      ],
+      image: jobninja,
+      source_code_link: "https://github.com/bron322/JobNinja",
     },
     {
       name: "Reel Raves",
@@ -261,6 +294,27 @@ import {
       ],
       image: reelraves,
       source_code_link: "https://github.com/bron322/AngularMovieReview",
+    },
+    {
+      name: "BearBrickFusion",
+      description:
+        "BearBrickFusion is an online platform dedicated to bringing the iconic Bearbrick figures to collectors and enthusiasts worldwide. Explore a vast collection of Bearbricks, ranging from classic designs to limited-edition releases.",
+      tags: [
+        {
+          name: "javascript",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "html",
+          color: "green-text-gradient",
+        },
+        {
+          name: "css",
+          color: "pink-text-gradient",
+        },
+      ],
+      image: bearbrickfusion,
+      source_code_link: "https://github.com/bron322/BearBrickFusion",
     },
     {
       name: "FYPSystem",
