@@ -46,6 +46,7 @@ import hungerdash from "./hungerdash.png";
 import jobninja from "./jobninja.png";
 import bearbrickfusion from "./bearbrickfusion.jpg";
 import emotion from "./emotion.png";
+import imageclasifier from "./imageclassifier.jpg";
 
 export {
   logo,
@@ -93,4 +94,5 @@ export {
   jobninja,
   bearbrickfusion,
   emotion,
+  imageclasifier,
 };

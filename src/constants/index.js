@@ -29,6 +29,7 @@ import {
     jobninja,
     emotion,
     bearbrickfusion,
+    imageclasifier,
   } from "../assets";
   
   export const navLinks = [
@@ -148,19 +149,18 @@ import {
       date: "August 2022 - Present",
       points: [
         "Pursuing Bachelor Degree of Science in Data Science and Artificial Intelligence.",
-        "Expected Honours(Highest Distinction), Current CGPA: 4.52/5.00",
-        "Relevant courses: Data Structures & Algorithm, Software Engineering, Algorithm Design and Analysis",
+        "Relevant courses: Data Structures & Algorithm, Software Engineering, Algorithm Design and Analysis, Data Analysis with Computer, Artificial Intelligence",
       ],
     },
     {
-      title: "Data Transcriber, Intern",
+      title: "IT, Intern",
       company_name: "S-Lab for Advanced Intelligence | NTU, Singapore",
       icon: ntu,
       iconBg: "#E6DEDD",
       date: "October 2023 - Present",
       points: [
         "Proficiency in translating and adapting machine learning code and content from Chinese to English",
-        "Facilitate in knowledge transfer and collaboration between Chinese and English-speaking communities",
+        "Assisting students in learning machine learning coding in Python to foster knowledge transfer and collaboration.",
       ],
     },
     {
@@ -273,6 +273,27 @@ import {
       ],
       image: jobninja,
       source_code_link: "https://github.com/bron322/JobNinja",
+    },
+    {
+      name: "Image Classifier",
+      description:
+        "A simple image classifier implemented using TensorFlow/Keras to predict whether a person in a photo is displaying a happy or sad face. The image classifier model is built using Convolutional Neural Networks (CNNs), a type of deep learning model commonly used for image classification tasks.",
+      tags: [
+        {
+          name: "tensorflow",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "keras",
+          color: "green-text-gradient",
+        },
+        {
+          name: "OpenCV python",
+          color: "pink-text-gradient",
+        },
+      ],
+      image: imageclasifier,
+      source_code_link: "https://github.com/bron322/ImageClassifier",
     },
     {
       name: "Reel Raves",
