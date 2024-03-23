@@ -153,7 +153,7 @@ import {
       ],
     },
     {
-      title: "IT, Intern",
+      title: "Data Science Education Project Assistant/Intern",
       company_name: "S-Lab for Advanced Intelligence | NTU, Singapore",
       icon: ntu,
       iconBg: "#E6DEDD",
