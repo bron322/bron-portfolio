@@ -5,7 +5,7 @@
 ![html](http://img.shields.io/badge/-Html-e24c27?style=flat-square&logo=html5&logoColor=white)
 ![css](http://img.shields.io/badge/CSS-2a65f1?style=flat-square&logo=css3&logoColor=white)
 
-![cover](./cover.jpg)
+![cover](./cover.png)
 
 ---
 
