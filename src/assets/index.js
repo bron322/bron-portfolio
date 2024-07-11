@@ -34,12 +34,14 @@ import starbucks from "./company/starbucks.png";
 import tesla from "./company/tesla.png";
 import ntu from "./company/ntu.png";
 import nie from "./company/nie.png";
+import micron from "./company/micron.png";
 
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
 import tripguide from "./tripguide.png";
 import vifitness from "./vifitness.jpg";
 import reelraves from "./reelraves.png";
+import counterstrike from "./counterstrike.png";
 import fypsystem from "./fypsystem.jpg";
 import nbaplayer from "./nbaplayer.jpg";
 import hungerdash from "./hungerdash.png";
@@ -53,6 +55,7 @@ export {
   ljj,
   backend,
   creator,
+  counterstrike,
   mobile,
   web,
   github,
@@ -73,6 +76,7 @@ export {
   typescript,
   threejs,
   meta,
+  micron,
   shopify,
   starbucks,
   tesla,

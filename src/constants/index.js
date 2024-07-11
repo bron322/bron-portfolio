@@ -16,6 +16,7 @@ import {
     figma,
     ntu,
     nie,
+    micron,
     reelraves,
     vifitness,
     fypsystem,
@@ -30,6 +31,7 @@ import {
     emotion,
     bearbrickfusion,
     imageclasifier,
+    counterstrike,
   } from "../assets";
   
   export const navLinks = [
@@ -68,6 +70,10 @@ import {
   
   const services = [
     {
+      title: "Data Scientist",
+      icon: creator,
+    },
+    {
       title: "Web Developer",
       icon: web,
     },
@@ -76,13 +82,9 @@ import {
       icon: mobile,
     },
     {
-      title: "Backend Developer",
+      title: "Fullstack Developer",
       icon: backend,
-    },
-    {
-      title: "Data Scientist",
-      icon: creator,
-    },
+    }
   ];
   
   const technologies = [
@@ -157,7 +159,7 @@ import {
       company_name: "S-Lab for Advanced Intelligence | NTU, Singapore",
       icon: ntu,
       iconBg: "#E6DEDD",
-      date: "October 2023 - Present",
+      date: "October 2023 - March 2024",
       points: [
         "Proficiency in translating and adapting machine learning code and content from Chinese to English",
         "Assisting students in learning machine learning coding in Python to foster knowledge transfer and collaboration.",
@@ -173,6 +175,18 @@ import {
         "Focused on capturing students' emotions during reading and note-taking activities.",
         "Led the design and implementation of an intuitive and user-friendly interface for the emotion analytics tool.",
         "Ensured seamless integration with Knowledge Forum's existing platform.",
+      ],
+    },
+    {
+      title: "Data Scientist, Intern",
+      company_name: "Micron Technology, Inc.",
+      icon: micron,
+      iconBg: "#E6DEDD",
+      date: "May 2024 - August 2024",
+      points: [
+        "Utilised Python, Pandas and XGBoost for data analysis and model development to optimize wafer classification.",
+        "Achieved significant 50% Test Time Reduction while maintaining high accuracy",
+        "Enhanced production efficiency and reduced testing costs and time by streamlining the wafer testing processes",
       ],
     },
   ];
@@ -296,46 +310,25 @@ import {
       source_code_link: "https://github.com/bron322/ImageClassifier",
     },
     {
-      name: "Reel Raves",
+      name: "CSGO Pro Player Analysis",
       description:
-        "The Reel Raves Angular project is a dynamic and user-friendly movie reviewing website that I designed and developed using Angular. This platform invites movie enthusiasts to explore and share their opinions on a diverse range of films. Users can easily navigate through the site, discover new movies, and contribute their reviews, creating an engaging community of film enthusiasts.",
+        "A comprehensive data science initiative aimed at analysing the performance metrics of CSGO players. Utilizing machine learning models and data visualization techniques, the project provides valuable resources for enhancing player performance, optimizing team strategies and predicting match outcomes.",
       tags: [
         {
-          name: "angular",
+          name: "Pandas",
           color: "blue-text-gradient",
         },
         {
-          name: "scss",
+          name: "XGBoost",
           color: "green-text-gradient",
         },
         {
-          name: "html",
+          name: "Shaply",
           color: "pink-text-gradient",
         },
       ],
-      image: reelraves,
-      source_code_link: "https://github.com/bron322/AngularMovieReview",
-    },
-    {
-      name: "BearBrickFusion",
-      description:
-        "BearBrickFusion is an online platform dedicated to bringing the iconic Bearbrick figures to collectors and enthusiasts worldwide. Explore a vast collection of Bearbricks, ranging from classic designs to limited-edition releases.",
-      tags: [
-        {
-          name: "javascript",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "html",
-          color: "green-text-gradient",
-        },
-        {
-          name: "css",
-          color: "pink-text-gradient",
-        },
-      ],
-      image: bearbrickfusion,
-      source_code_link: "https://github.com/bron322/BearBrickFusion",
+      image: counterstrike,
+      source_code_link: "https://github.com/bron322/CSGOProPlayersAnalysis",
     },
     {
       name: "FYPSystem",
