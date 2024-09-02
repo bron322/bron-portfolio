@@ -49,6 +49,8 @@ import jobninja from "./jobninja.png";
 import bearbrickfusion from "./bearbrickfusion.jpg";
 import emotion from "./emotion.png";
 import imageclasifier from "./imageclassifier.jpg";
+import carpark from "./carparkdetection.jpg";
+import electricvehicle from "./electricvehicle.gif";
 
 export {
   logo,
@@ -99,4 +101,6 @@ export {
   bearbrickfusion,
   emotion,
   imageclasifier,
+  carpark,
+  electricvehicle
 };

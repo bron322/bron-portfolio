@@ -32,6 +32,8 @@ import {
     bearbrickfusion,
     imageclasifier,
     counterstrike,
+    carpark,
+    electricvehicle,
   } from "../assets";
   
   export const navLinks = [
@@ -245,6 +247,44 @@ import {
       ],
       image: emotion,
       source_code_link: "https://github.com/wytan12/EmotionAnalysis.git",
+    },
+    {
+      name: "Advanced Car Parking Management System",
+      description:
+        "This project is an advanced car parking management system that utilizes deep learning techniques to monitor and manage parking spaces. The system is powered by a VGG16 model to classify parking spaces as either occupied or vacant.",
+      tags: [
+        {
+          name: "python",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "opencv",
+          color: "green-text-gradient",
+        },
+        {
+          name: "deep learning",
+          color: "pink-text-gradient",
+        },
+      ],
+      image: carpark,
+      source_code_link: "https://github.com/bron322/CarParkSpaceDetection",
+    },
+    {
+      name: "EV Population Power BI",
+      description:
+        "This Power BI electric vehicle population project involves analyzing the distribution of electric vehicles (EVs) across various regions in United States.",
+      tags: [
+        {
+          name: "PowerBI",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "DataAnalytics",
+          color: "green-text-gradient",
+        },
+      ],
+      image: electricvehicle,
+      source_code_link: "https://github.com/bron322/EVPopulationPowerBI",
     },
     {
       name: "HungerDash",
