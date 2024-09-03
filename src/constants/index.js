@@ -34,6 +34,7 @@ import {
     counterstrike,
     carpark,
     electricvehicle,
+    resumecategorization,
   } from "../assets";
   
   export const navLinks = [
@@ -285,6 +286,27 @@ import {
       ],
       image: electricvehicle,
       source_code_link: "https://github.com/bron322/EVPopulationPowerBI",
+    },
+    {
+      name: "Resume Categorization",
+      description:
+        "Using Streamlit for an interactive web application and a Kaggle dataset for training, the goal is to automatically classify resumes into predefined categories. The project showcases the use of natural language processing (NLP) and classification algorithms to streamline the resume screening process.",
+      tags: [
+        {
+          name: "Python",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "Streamlit",
+          color: "green-text-gradient",
+        },
+        {
+          name: "LogisticRegression",
+          color: "pink-text-gradient",
+        },
+      ],
+      image: resumecategorization,
+      source_code_link: "https://github.com/bron322/ResumeCategorization",
     },
     {
       name: "HungerDash",

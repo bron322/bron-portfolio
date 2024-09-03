@@ -51,6 +51,7 @@ import emotion from "./emotion.png";
 import imageclasifier from "./imageclassifier.jpg";
 import carpark from "./carparkdetection.jpg";
 import electricvehicle from "./electricvehicle.gif";
+import resumecategorization from "./resumecategorization.jpg";
 
 export {
   logo,
@@ -102,5 +103,6 @@ export {
   emotion,
   imageclasifier,
   carpark,
-  electricvehicle
+  electricvehicle,
+  resumecategorization
 };
