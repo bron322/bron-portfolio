@@ -35,6 +35,7 @@ import tesla from "./company/tesla.png";
 import ntu from "./company/ntu.png";
 import nie from "./company/nie.png";
 import micron from "./company/micron.png";
+import sap from "./company/sap.png"
 
 import carrent from "./carrent.png";
 import jobit from "./jobit.png";
@@ -80,6 +81,7 @@ export {
   threejs,
   meta,
   micron,
+  sap,
   shopify,
   starbucks,
   tesla,

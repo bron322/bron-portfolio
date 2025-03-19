@@ -17,6 +17,7 @@ import {
     ntu,
     nie,
     micron,
+    sap,
     reelraves,
     vifitness,
     fypsystem,
@@ -147,37 +148,15 @@ import {
   
   const experiences = [
     {
-      title: "Student",
-      company_name: "Nanyang Technological University, Singapore",
-      icon: ntu,
-      iconBg: "#383E56",
-      date: "August 2022 - Present",
-      points: [
-        "Pursuing Bachelor Degree of Science in Data Science and Artificial Intelligence.",
-        "Relevant courses: Data Structures & Algorithm, Software Engineering, Algorithm Design and Analysis, Data Analysis with Computer, Artificial Intelligence",
-      ],
-    },
-    {
-      title: "Data Science Education Project Assistant/Intern",
-      company_name: "S-Lab for Advanced Intelligence | NTU, Singapore",
-      icon: ntu,
+      title: "Full Stack Developer, Intern",
+      company_name: "SAP Asia Pte. Ltd.",
+      icon: sap,
       iconBg: "#E6DEDD",
-      date: "October 2023 - March 2024",
+      date: "January 2025 - July 2025",
       points: [
-        "Proficiency in translating and adapting machine learning code and content from Chinese to English",
-        "Assisting students in learning machine learning coding in Python to foster knowledge transfer and collaboration.",
-      ],
-    },
-    {
-      title: "Software Engineer, Intern",
-      company_name: "National Institute of Education, Singapore",
-      icon: nie,
-      iconBg: "#383E56",
-      date: "December 2023 - Present",
-      points: [
-        "Focused on capturing students' emotions during reading and note-taking activities.",
-        "Led the design and implementation of an intuitive and user-friendly interface for the emotion analytics tool.",
-        "Ensured seamless integration with Knowledge Forum's existing platform.",
+        "Developed a Next.JS demo web app to showcase the integration of a new GenAI feature into an existing SAP product.",
+        "Implemented a Jenkins CI/CD pipeline to automate build, test, and deployment processes.",
+        "Actively participated in scrum practices, contributing to sprint planning, stand-ups, and retrospectives.",
       ],
     },
     {
@@ -188,8 +167,42 @@ import {
       date: "May 2024 - August 2024",
       points: [
         "Utilised Python, Pandas and XGBoost for data analysis and model development to optimize wafer classification.",
-        "Achieved significant 50% Test Time Reduction while maintaining high accuracy",
-        "Enhanced production efficiency and reduced testing costs and time by streamlining the wafer testing processes",
+        "Achieved significant 50% Test Time Reduction while maintaining high accuracy.",
+        "Enhanced production efficiency and reduced testing costs and time by streamlining the wafer testing processes.",
+      ],
+    },
+    {
+      title: "Software Engineer, Intern",
+      company_name: "National Institute of Education, Singapore",
+      icon: nie,
+      iconBg: "#383E56",
+      date: "December 2023 - December 2024",
+      points: [
+        "Focused on capturing students' emotions during reading and note-taking activities.",
+        "Led the design and implementation of an intuitive and user-friendly interface for the emotion analytics tool.",
+        "Ensured seamless integration with Knowledge Forum's existing platform.",
+      ],
+    },
+    {
+      title: "Data Science Education Project Assistant/Intern",
+      company_name: "S-Lab for Advanced Intelligence | NTU, Singapore",
+      icon: ntu,
+      iconBg: "#E6DEDD",
+      date: "October 2023 - March 2024",
+      points: [
+        "Proficiency in translating and adapting machine learning code and content from Chinese to English.",
+        "Assisting students in learning machine learning coding in Python to foster knowledge transfer and collaboration.",
+      ],
+    },
+    {
+      title: "Student",
+      company_name: "Nanyang Technological University, Singapore",
+      icon: ntu,
+      iconBg: "#383E56",
+      date: "August 2022 - Present",
+      points: [
+        "Pursuing Bachelor Degree of Science in Data Science and Artificial Intelligence.",
+        "Relevant courses: Data Structures & Algorithm, Software Engineering, Algorithm Design and Analysis, Data Analysis with Computer, Artificial Intelligence.",
       ],
     },
   ];
