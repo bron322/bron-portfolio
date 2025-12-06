@@ -1,14 +1,14 @@
 // src/components/Hero.jsx
 import { motion } from "framer-motion";
 import { styles } from "../styles";
-import CosmicCanvas from "../cosmic/CosmicCanvas";
+import SafeCosmicCanvas from "../cosmic/SafeCosmicCanvas";
 
 const Hero = () => {
   return (
     <section className="relative w-full h-screen mx-auto overflow-hidden">
-      {/* Cosmic background */}
+      {/* 3D background */}
       <div className="absolute inset-0 z-0">
-        <CosmicCanvas />
+        <SafeCosmicCanvas />
       </div>
 
       {/* Foreground content */}

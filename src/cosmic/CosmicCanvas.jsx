@@ -12,10 +12,10 @@ import {
 import { ShapeType } from "./types";
 import ParticleSystem from "./components/ParticleSystem";
 
-const CosmicCanvas = () => {
+const CosmicCanvas = ({ mode = "desktop" }) => {
   const [mounted, setMounted] = useState(false);
 
-  // Only render the Canvas after the component has mounted on the client
+  // Only render Canvas after mount (avoids SSR / hydration weirdness)
   useEffect(() => {
     setMounted(true);
   }, []);
@@ -41,51 +41,63 @@ const CosmicCanvas = () => {
 
   if (!mounted) return null;
 
+  const isMobileMode = mode === "mobile";
+
+  const particleCount = isMobileMode ? 4500 : 12300;
+  const starsCount = isMobileMode ? 2000 : 5000;
+  const enablePostprocessing = !isMobileMode;
+
   return (
     <div className="w-full h-full">
       <Canvas
         className="w-full h-full"
         style={{ width: "100%", height: "100%" }}
-        camera={{ position: [0, 0, 60], fov: 45 }}
-        gl={{ antialias: false }}
-        // 🔑 disable R3F's pointer event system (avoids addEventListener on null)
-        events={undefined}
+        camera={{
+          position: [0, 0, isMobileMode ? 75 : 60],
+          fov: isMobileMode ? 55 : 45,
+        }}
+        dpr={isMobileMode ? [1, 1.5] : [1, 2]}
+        gl={{ antialias: !isMobileMode }}
+        events={undefined} // avoid addEventListener on null issues
       >
         <color attach="background" args={["#020205"]} />
 
         <Suspense fallback={null}>
           <ParticleSystem
             currentShape={currentShape}
-            particleCount={12300}
+            particleCount={particleCount}
             speed={speed}
           />
 
           <Stars
             radius={100}
             depth={50}
-            count={5000}
+            count={starsCount}
             factor={4}
             saturation={0}
             fade
             speed={1}
           />
+
           <ambientLight intensity={0.5} />
 
-          <EffectComposer disableNormalPass>
-            <Bloom
-              luminanceThreshold={0.2}
-              mipmapBlur
-              intensity={0.8}
-              radius={0.4}
-            />
-            <Noise opacity={0.05} />
-            <Vignette eskil={false} offset={0.1} darkness={1.1} />
-          </EffectComposer>
+          {enablePostprocessing && (
+            <EffectComposer disableNormalPass>
+              <Bloom
+                luminanceThreshold={0.2}
+                mipmapBlur
+                intensity={0.8}
+                radius={0.4}
+              />
+              <Noise opacity={0.05} />
+              <Vignette eskil={false} offset={0.1} darkness={1.1} />
+            </EffectComposer>
+          )}
         </Suspense>
 
         <OrbitControls
           enablePan={false}
-          enableZoom={true}
+          enableZoom={!isMobileMode}
           autoRotate
           autoRotateSpeed={0.5}
           minDistance={20}
