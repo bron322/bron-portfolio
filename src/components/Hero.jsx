@@ -1,13 +1,13 @@
 // src/components/Hero.jsx
 import { motion } from "framer-motion";
 import { styles } from "../styles";
-import CosmicCanvas from "../cosmic/CosmicCanvas"; // make sure this path is correct
+import CosmicCanvas from "../cosmic/CosmicCanvas";
 
 const Hero = () => {
   return (
     <section className="relative w-full h-screen mx-auto overflow-hidden">
       {/* Cosmic background */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
+      <div className="absolute inset-0 z-0">
         <CosmicCanvas />
       </div>
 
@@ -15,7 +15,6 @@ const Hero = () => {
       <div
         className={`relative z-10 max-w-7xl mx-auto ${styles.paddingX} pt-24 pb-10 flex flex-col lg:flex-row items-center gap-10`}
       >
-        {/* Left: vertical line + text */}
         <div className="flex flex-row items-start gap-5 w-full lg:w-[60%]">
           <div className="flex flex-col justify-center items-center mt-5">
             <div className="w-5 h-5 rounded-full bg-[#7AFFF4]" />
@@ -23,13 +22,13 @@ const Hero = () => {
           </div>
 
           <div>
-          <h1 className={`${styles.heroHeadText} text-white leading-tight`}>
-            Hi, I'm
-            <br />
-            <span className="text-[#7AFFF4] whitespace-nowrap">
-              Lebron Lim
-            </span>
-          </h1>
+            <h1 className={`${styles.heroHeadText} text-white leading-tight`}>
+              Hi, I'm
+              <br />
+              <span className="text-[#7AFFF4] whitespace-nowrap">
+                Lebron Lim
+              </span>
+            </h1>
             <p className={`${styles.heroSubText} mt-2 text-white-100`}>
               Data Scientist | Software Engineer{" "}
               <br className="sm:block hidden" />
@@ -38,11 +37,9 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Right side can be left empty for breathing space */}
         <div className="hidden lg:block w-[40%]" />
       </div>
 
-      {/* Scroll indicator */}
       <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center z-20">
         <a href="#about">
           <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">

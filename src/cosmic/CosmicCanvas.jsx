@@ -1,3 +1,4 @@
+// src/cosmic/CosmicCanvas.jsx
 import React, { useState, useEffect, Suspense } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Stars } from "@react-three/drei";
@@ -12,12 +13,20 @@ import { ShapeType } from "./types";
 import ParticleSystem from "./components/ParticleSystem";
 
 const CosmicCanvas = () => {
+  const [mounted, setMounted] = useState(false);
+
+  // Only render the Canvas after the component has mounted on the client
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
   const [currentShape, setCurrentShape] = useState(ShapeType.CosmicVortex);
   const [autoSwitch] = useState(true);
   const [speed] = useState(1);
 
   useEffect(() => {
     if (!autoSwitch) return;
+
     const shapes = Object.values(ShapeType);
     const interval = setInterval(() => {
       setCurrentShape((prev) => {
@@ -26,8 +35,11 @@ const CosmicCanvas = () => {
         return shapes[nextIndex];
       });
     }, 5000);
+
     return () => clearInterval(interval);
   }, [autoSwitch]);
+
+  if (!mounted) return null;
 
   return (
     <div className="w-full h-full">
@@ -36,6 +48,8 @@ const CosmicCanvas = () => {
         style={{ width: "100%", height: "100%" }}
         camera={{ position: [0, 0, 60], fov: 45 }}
         gl={{ antialias: false }}
+        // 🔑 disable R3F's pointer event system (avoids addEventListener on null)
+        events={undefined}
       >
         <color attach="background" args={["#020205"]} />
 
