@@ -45,7 +45,11 @@ import {
     },
     {
       id: "work",
-      title: "Work",
+      title: "Experiences",
+    },
+    {
+      id: "freelance",
+      title: "Freelance"
     },
     {
       id: "projects",

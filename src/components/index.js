@@ -6,11 +6,15 @@ import Tech from './Tech';
 import Experience from './Experience';
 import Works from './Works';
 import Contact from './Contact';
+import FreelanceCard from './freelance/FreelanceCard';
+import FreelanceSection from './freelance/FreelanceSection';
 
 export {
   Hero,
   Navbar,
   About,
+  FreelanceCard,
+  FreelanceSection,
   Tech,
   Experience,
   Works,
