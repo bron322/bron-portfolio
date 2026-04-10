@@ -4,6 +4,10 @@ import { ExternalLink, X } from "lucide-react";
 
 const FreelanceCard = ({ project, index }) => {
   const [open, setOpen] = useState(false);
+  const hasGithubUrl =
+    typeof project.githubUrl === "string" &&
+    project.githubUrl.trim() !== "" &&
+    project.githubUrl !== "#";
 
   useEffect(() => {
     if (!open) return;
@@ -48,15 +52,26 @@ const FreelanceCard = ({ project, index }) => {
 
             {/* Links Overlay */}
             <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              {/* If liveUrl exists but is private, show popup instead */}
-              <button
-                type="button"
-                onClick={() => setOpen(true)}
-                className="p-3 rounded-full bg-emerald-400 text-black hover:scale-110 transition-transform"
-                aria-label="View demo"
-              >
-                <ExternalLink className="w-5 h-5" />
-              </button>
+              {hasGithubUrl ? (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="p-3 rounded-full bg-emerald-400 text-black hover:scale-110 transition-transform"
+                  aria-label={`View ${project.title} on GitHub`}
+                >
+                  <ExternalLink className="w-5 h-5" />
+                </a>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setOpen(true)}
+                  className="p-3 rounded-full bg-emerald-400 text-black hover:scale-110 transition-transform"
+                  aria-label="View demo"
+                >
+                  <ExternalLink className="w-5 h-5" />
+                </button>
+              )}
             </div>
           </div>
 

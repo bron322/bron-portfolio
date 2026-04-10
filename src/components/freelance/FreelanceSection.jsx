@@ -6,6 +6,8 @@ import FreelanceCard from "./FreelanceCard";
 import TestimonialCard from "./TestimonialCard";
 import ravoImg from "../../assets/ravo.jpeg";
 import scoutImg from "../../assets/scout.jpeg";
+import distributorImg from "../../assets/distributor.png";
+import cartImg from "../../assets/cartdemo.png";
 
 const freelanceProjects = [
   {
@@ -30,6 +32,30 @@ const freelanceProjects = [
     tags: ["MongoDB", "Express", "React", "Node.js"],
     liveUrl: "#",
     githubUrl: "#",
+    status: "completed",
+  },
+  {
+    id: 3,
+    title: "Distributor AI Agent",
+    client: "Independent Project",
+    description:
+      "Built an AI agent for global footwear distributor discovery, enabling lead identification, scoring, and fit analysis across international markets. Designed workflows for structured lead evaluation, outreach generation, and system performance monitoring, demonstrating how AI can support business development and sales research.",
+    image: distributorImg,
+    tags: ["Next.js", "TypeScript", "AI Agents", "LLM"],
+    liveUrl: "#",
+    githubUrl: "https://github.com/bron322/GlobalDistributorAgent",
+    status: "completed",
+  },
+  {
+    id: 4,
+    title: "Cart Rescue AI Agent",
+    client: "Independent Project",
+    description:
+      "Built an AI agent for abandoned cart recovery that detects cart context and recommends targeted customer follow-up actions. Implemented scenario-based handling for standard cart reminders, low-stock urgency prompts, and discount offers for high-value new customers to improve conversion and recover lost revenue.",
+    image: cartImg,
+    tags: ["React", "Python", "FastAPI", "AI Agents"],
+    liveUrl: "#",
+    githubUrl: "https://github.com/bron322/CartRescueAIAgent",
     status: "completed",
   },
 ];
