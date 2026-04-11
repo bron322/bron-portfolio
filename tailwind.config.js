@@ -5,6 +5,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        bg: "#0a0a0a",
+        text: "#f5f5f5",
+        muted: "#888888",
+        stroke: "#1f1f1f",
         primary: "#050816",
         secondary: "#aaa6c3",
         tertiary: "#151030",
@@ -14,6 +18,9 @@ module.exports = {
       },
       boxShadow: {
         card: "0px 35px 120px -15px #211e35",
+      },
+      fontFamily: {
+        display: ['"Instrument Serif"', "serif"],
       },
       screens: {
         xs: "450px",
