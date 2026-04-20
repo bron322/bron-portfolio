@@ -48,6 +48,10 @@ import {
       title: "Experiences",
     },
     {
+      id: "blog",
+      title: "Blog",
+    },
+    {
       id: "freelance",
       title: "Freelance"
     },

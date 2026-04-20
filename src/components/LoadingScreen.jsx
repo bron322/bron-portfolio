@@ -3,8 +3,8 @@ import { useEffect, useRef, useState } from "react";
 
 const words = ["Developer", "Artificial Intelligence", "AI Enthusiast"];
 const ease = [0.4, 0, 0.2, 1];
-const wordInterval = 1800;
-const counterDuration = 5400;
+const wordInterval = 1500;
+const counterDuration = 4500;
 const completionDelay = 800;
 
 const LoadingScreen = ({ onComplete }) => {

@@ -9,6 +9,7 @@ import Contact from './Contact';
 import LoadingScreen from './LoadingScreen';
 import FreelanceCard from './freelance/FreelanceCard';
 import FreelanceSection from './freelance/FreelanceSection';
+import LearningBlogs from './blog/LearningBlogs';
 
 export {
   Hero,
@@ -16,6 +17,7 @@ export {
   About,
   FreelanceCard,
   FreelanceSection,
+  LearningBlogs,
   Tech,
   Experience,
   Works,

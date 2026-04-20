@@ -222,3 +222,29 @@
     @apply bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60;
   }
 }
+
+/* Blog article prose styles */
+.blog-prose p {
+  font-size: 0.95rem;
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: 1rem;
+}
+
+.blog-prose p:last-child {
+  margin-bottom: 0;
+}
+
+.blog-prose strong {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+}
+
+.blog-prose code {
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(110, 231, 183, 0.8);
+  padding: 0.1em 0.4em;
+  border-radius: 0.25rem;
+  font-size: 0.85em;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+}
