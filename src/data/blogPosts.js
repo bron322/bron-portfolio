@@ -14,6 +14,9 @@
 import csharpecommerceImg from "../assets/csharpecommerce.png";
 import csharpswaggerImg from "../assets/csharpswagger.png";
 import miniblogapiImg from "../assets/miniblogapi.png";
+import golangcoverImg from "../assets/golangcover.png";
+import golangasyncImg from "../assets/golangasync.jpg";
+import golangsyncImg from "../assets/golangsync.jpg";
 
 const blogPosts = [
   {
@@ -292,6 +295,309 @@ For a project like this where there's no frontend, Swagger is basically indispen
 The two biggest takeaways for me were: first, that the repository pattern and dependency injection aren't just academic concepts — they genuinely make your code easier to reason about and change. And second, that REST conventions exist for a reason — once you follow them consistently, your API becomes predictable to anyone who's worked with APIs before.
 
 It also reinforced that small, focused projects are the best way for me to learn. I didn't need a complex app with authentication, file uploads, and background jobs. A five-endpoint blog API was enough to make several important ideas click. I'd rather understand five things deeply than ten things superficially.`,
+      },
+    ],
+  },
+  {
+    slug: "golang-goroutines-channels-learning",
+    title:
+      "What I Learned About Goroutines and Channels Building a Go Booking API",
+    date: "April 2026",
+    excerpt:
+      "A hands-on walkthrough of Go concurrency — goroutines, buffered channels, select statements, sync.Mutex, and context cancellation — learned by building a room booking API with async notifications.",
+    tags: ["Go", "Goroutines", "Channels", "Concurrency", "Gin", "GORM"],
+    repoUrl: "https://github.com/bron322/mini-golang-booking",
+    coverImage: golangcoverImg,
+    content: [
+      {
+        heading: "Why I Built This",
+        body: `After my two C# ASP.NET Core projects, I wanted to try a different backend ecosystem. Go kept coming up in conversations about high-performance APIs and microservices, and its concurrency model — goroutines and channels — sounded fundamentally different from the async/await pattern I was used to in C# and JavaScript.
+
+I decided to build something concrete: a room booking API where you can create rooms, book time slots, and prevent double bookings. That scope was enough to force me through Go's HTTP routing (Gin), database access (GORM with SQLite), and — most importantly — real concurrency with goroutines and channels for asynchronous booking notifications.
+
+The goal was not to build something production-grade. It was to understand Go's concurrency primitives by using them in a real context rather than just reading about them.`,
+      },
+      {
+        heading: "What the Project Does",
+        image: golangcoverImg,
+        imageAlt: "Swagger UI showing the Room Booking API endpoints",
+        body: `The Room Booking API is a small RESTful backend with five endpoints:
+
+• **POST /api/rooms** — create a room with a name and capacity.
+
+• **GET /api/rooms** — list all rooms.
+
+• **POST /api/bookings** — book a room for a time slot. The API rejects overlapping bookings.
+
+• **GET /api/bookings** — list all bookings.
+
+• **DELETE /api/bookings/:id** — cancel a booking (soft delete — status changes to "cancelled").
+
+The interesting part is what happens after a booking is created. The API publishes a \`BookingCreatedEvent\` that either gets processed synchronously (blocking the HTTP response) or asynchronously via a background goroutine. That async path is where all the concurrency learning happened.`,
+      },
+      {
+        heading: "The Project Structure",
+        body: `The project follows a layered architecture that I carried over from my C# projects:
+
+• **handlers/** — deal with HTTP requests and responses. Parse JSON, call the service, return status codes.
+
+• **services/** — hold business rules. This is where the double-booking check, the mutex lock, and the event publishing live.
+
+• **repositories/** — talk to the database through GORM. The only layer that knows SQL/query details.
+
+• **models/** — define the database tables (\`Room\`, \`Booking\`) as Go structs with GORM tags.
+
+• **database/** — owns the database connection and migrations.
+
+• **routes/** — wires everything together: creates repositories, services, handlers, and maps them to Gin routes.
+
+The request flow is: \`HTTP request → handler → service → repository → database\`. This separation made it much easier to reason about where concurrency belongs. The handlers handle HTTP. The services handle business logic and concurrency. The repositories handle data.`,
+      },
+      {
+        heading: "What Are Goroutines and Why They Matter",
+        body: `A goroutine is Go's version of a lightweight thread. You start one by putting the \`go\` keyword before a function call. That function then runs concurrently — it doesn't block the caller.
+
+In my project, the most important goroutine is the background worker that processes booking notifications:
+
+\`\`\`go
+go publisher.runWorker(ctx)
+\`\`\`
+
+That single line starts a long-running goroutine when the application boots. It sits in the background, waiting for events to arrive through a channel, and processes them without blocking any HTTP request.
+
+What surprised me is how cheap goroutines are. In C# or Java, spawning a thread is expensive — you think carefully about thread pools and resource limits. In Go, goroutines are managed by the Go runtime and use only a few kilobytes of stack space. You can spin up thousands of them without worry.
+
+I also used goroutines in the HTTP server itself. In \`main.go\`, the server runs in a goroutine so the main function can wait for shutdown signals:
+
+\`\`\`go
+go func() {
+    if err := server.ListenAndServe(); err != nil && !errors.Is(err, http.ErrServerClosed) {
+        serverErrors <- err
+    }
+}()
+\`\`\`
+
+This pattern — start the server in the background, then wait for either an error or a shutdown signal — is idiomatic Go. It was the first time I truly understood why people say Go was "designed for concurrency".`,
+      },
+      {
+        heading: "Understanding Channels",
+        body: `If goroutines are concurrent workers, channels are how they talk to each other. A channel is a typed pipe: you send a value in on one end, and another goroutine receives it on the other end.
+
+In my project, I created a buffered channel to pass booking events from the HTTP handler to the background worker:
+
+\`\`\`go
+events: make(chan BookingCreatedEvent, bufferSize)
+\`\`\`
+
+The \`bufferSize\` of 10 means the channel can hold up to 10 events without making the sender wait. This is important because I don't want the HTTP request to block if the worker is busy processing a previous notification.
+
+The event itself is a simple struct:
+
+\`\`\`go
+type BookingCreatedEvent struct {
+    BookingID uint
+    RoomID    uint
+    UserName  string
+    StartTime time.Time
+    EndTime   time.Time
+}
+\`\`\`
+
+Sending an event into the channel looks like this: \`p.events <- event\`. Receiving looks like this: \`event := <-p.events\`. The arrow operator \`<-\` shows the direction of data flow, which I found intuitive once I stopped overthinking it.
+
+The key insight for me was that channels enforce safe data transfer between goroutines. You don't need to worry about shared memory, locks, or data races for the data passing through the channel — the channel handles synchronisation for you.`,
+      },
+      {
+        heading: "The Select Statement — Go's Concurrency Swiss Army Knife",
+        body: `The \`select\` statement is like a \`switch\` but for channel operations. It waits on multiple channels and executes whichever case is ready first.
+
+I used \`select\` in two critical places. First, in the publisher to make the send non-blocking:
+
+\`\`\`go
+select {
+case p.events <- event:
+    log.Printf("queued booking created event")
+default:
+    log.Printf("channel full; skipped notification")
+}
+\`\`\`
+
+The \`default\` branch is the key. Without it, sending to a full channel would block the HTTP request until space opens up. With \`default\`, if the channel is full, the code skips the notification and moves on. The booking itself is already saved — dropping a fake notification is acceptable.
+
+Second, in the worker loop to listen for both events and shutdown signals:
+
+\`\`\`go
+for {
+    select {
+    case <-ctx.Done():
+        log.Println("worker stopped")
+        return
+    case event := <-p.events:
+        log.Printf("worker picked up booking_id=%d", event.BookingID)
+        sendFakeBookingNotification(event)
+    }
+}
+\`\`\`
+
+This is a common Go pattern: the worker blocks on \`select\`, waiting for either a new event or a cancellation signal. When the app receives \`Ctrl+C\`, the context is cancelled, \`ctx.Done()\` fires, and the worker exits cleanly.
+
+Before building this, \`select\` felt abstract. After using it, I realised it's the core building block for any Go program that needs to coordinate multiple concurrent operations.`,
+      },
+      {
+        heading: "Sync vs Async — Seeing the Difference",
+        body: `To really understand why goroutines and channels matter, I built a toggle between synchronous and asynchronous notification modes using an environment variable \`NOTIFICATION_MODE\`.
+
+The fake notification function sleeps for 800 milliseconds to simulate a slow email provider:
+
+\`\`\`go
+func sendFakeBookingNotification(event BookingCreatedEvent) {
+    log.Printf("start fake email for booking_id=%d", event.BookingID)
+    time.Sleep(800 * time.Millisecond)
+    log.Printf("finished fake email for booking_id=%d", event.BookingID)
+}
+\`\`\`
+
+In **sync mode**, this function runs inside the HTTP request. The API creates the booking, sends the fake email, waits 800ms, then returns the response. The total request time is over 800ms.
+
+In **async mode**, the API creates the booking, pushes an event into the buffered channel, and returns immediately. The background goroutine picks up the event and processes the notification later. The total request time drops to around 10ms.`,
+      },
+      {
+        heading: "The Numbers Don't Lie",
+        image: golangsyncImg,
+        imageAlt: "Terminal showing sync mode — CreateBooking completed in 808ms",
+        body: `In sync mode, the terminal clearly shows the API blocking on the notification. The \`[PERF]\` log shows \`CreateBooking completed in 808ms\`. The HTTP response doesn't return until the fake email is done. For a single request this is merely slow, but imagine hundreds of concurrent bookings — each one waiting 800ms for a notification it doesn't need to wait for.`,
+      },
+      {
+        heading: "Async Mode — The Goroutine Advantage",
+        image: golangasyncImg,
+        imageAlt: "Terminal showing async mode — CreateBooking completed in 10ms",
+        body: `In async mode, the same booking completes in roughly 10ms. The HTTP response returns almost immediately. The fake email notification happens in the background — you can see the \`[booking-events] worker picked up booking_id\` log appearing after the response.
+
+This was the moment goroutines and channels clicked for me. The difference isn't theoretical — it's an 80x improvement in response time, and the only change is whether the notification runs in the request goroutine or gets handed off to a background worker via a channel.
+
+In a real production system, that background worker might send an actual email, push a message to a queue, or call another microservice. The point is the same: the user gets their response fast, and the slow work happens concurrently.`,
+      },
+      {
+        heading: "Protecting Shared State with sync.Mutex",
+        body: `While channels handle communication between goroutines, sometimes you need to protect shared state directly. That's where \`sync.Mutex\` comes in.
+
+The booking service has a critical section: checking if a room is available and then creating the booking. Without protection, two simultaneous requests could both check and find no overlap, then both create a booking — a classic race condition.
+
+I used a mutex to serialise this section:
+
+\`\`\`go
+s.bookingMutex.Lock()
+defer s.bookingMutex.Unlock()
+
+booking := &models.Booking{ ... }
+if err := s.bookingRepo.CreateIfNoOverlapInTransaction(booking); err != nil {
+    return nil, err
+}
+\`\`\`
+
+\`Lock()\` blocks other goroutines from entering the same section until \`Unlock()\` is called. The \`defer\` keyword ensures the mutex is always unlocked, even if the function returns early due to an error.
+
+Importantly, the mutex works alongside a GORM database transaction — the repository's \`CreateIfNoOverlapInTransaction\` wraps the overlap check and the insert in a single transaction. The mutex protects at the Go process level; the transaction protects at the database level. Together, they prevent double bookings even under concurrent load.
+
+The concurrency test in \`booking_service_test.go\` proves this works. It starts two goroutines that try to book the same room at exactly the same time, and verifies that exactly one succeeds while the other gets a conflict error.`,
+      },
+      {
+        heading: "Context Cancellation and Graceful Shutdown",
+        body: `One thing I didn't appreciate before this project is how Go uses \`context.Context\` for cancellation. In \`main.go\`, the app creates a context that listens for OS signals:
+
+\`\`\`go
+appCtx, stop := signal.NotifyContext(context.Background(), syscall.SIGINT, syscall.SIGTERM)
+defer stop()
+\`\`\`
+
+This context is passed down to the event publisher, which passes it to the background worker. When the user presses \`Ctrl+C\`, the context is cancelled, the worker's \`select\` statement picks up \`ctx.Done()\`, and the goroutine exits cleanly.
+
+The main function also uses a \`select\` to wait for either a server error or the shutdown signal:
+
+\`\`\`go
+select {
+case err := <-serverErrors:
+    log.Fatalf("failed to start server: %v", err)
+case <-appCtx.Done():
+    log.Println("shutting down server")
+}
+\`\`\`
+
+Then it calls \`server.Shutdown()\` with a 5-second timeout. This gives in-flight requests a chance to finish before the process exits.
+
+This pattern — context propagation for cancellation — is everywhere in Go. Once I understood it here, I started seeing it in every Go library and framework. It's how Go programs coordinate the "stop doing work" signal across dozens of goroutines without messy cleanup code.`,
+      },
+      {
+        heading: "Testing Concurrency",
+        body: `Writing tests for concurrent code was a new challenge. The project has two visual demo tests in \`booking_service_test.go\` that make the concurrency patterns observable.
+
+**TestBookingEventWorkerVisualDemo** creates a publisher, sends an event into the channel, then waits for the worker goroutine to process it. Running with \`go test ./services -v\` shows the timeline: event queued → worker picks it up → fake notification finishes → worker stops.
+
+**TestConcurrentCreateBookingVisualDemo** is more interesting. It creates two goroutines that both try to book the same room at the same time:
+
+\`\`\`go
+startCh := make(chan struct{})
+for _, userName := range []string{"User A", "User B"} {
+    go func(name string) {
+        <-startCh  // block until released
+        _, err := service.CreateBooking(room.ID, name, startTime, endTime)
+        resultCh <- err
+    }(userName)
+}
+close(startCh)  // release both at once
+\`\`\`
+
+The trick is the \`startCh\` channel. Both goroutines block on \`<-startCh\` until the test calls \`close(startCh)\`, which releases them simultaneously. This maximises the chance of a real race condition. The test then asserts exactly one booking succeeds and one gets a conflict.
+
+This is a pattern I'll reuse: use a channel as a starting gate to synchronise goroutines, then collect results through another channel. It makes concurrent tests deterministic and easy to reason about.`,
+      },
+      {
+        heading: "What Confused Me at First",
+        body: `A few things that tripped me up during the build:
+
+**Channel direction was confusing.** The \`<-\` operator can mean send or receive depending on which side of the channel it's on. \`ch <- value\` sends, \`value := <-ch\` receives. Simple in hindsight, but I mixed them up several times.
+
+**Buffered vs unbuffered channels.** My first version used an unbuffered channel, which caused the HTTP request to block until the worker received the event. Switching to a buffered channel with \`make(chan BookingCreatedEvent, 10)\` fixed that — the sender can drop up to 10 events without waiting.
+
+**Goroutine leaks.** Early on I forgot to pass the context to the worker, which meant the goroutine kept running after the server shut down. Adding \`case <-ctx.Done(): return\` in the worker's \`select\` fixed the leak.
+
+**The \`defer\` keyword with mutexes.** I initially tried to manually unlock the mutex at every return point, which was error-prone. Using \`defer s.bookingMutex.Unlock()\` right after \`Lock()\` guarantees the mutex is always released, no matter how the function exits.
+
+**GORM \`.Preload()\`.** Just like in my C# project with EF Core's \`.Include()\`, I had to explicitly preload related entities. Accessing \`booking.Room\` without \`.Preload("Room")\` gave me an empty struct — not nil, just zero values. That was a subtle one.`,
+      },
+      {
+        heading: "Key Takeaways on Go Concurrency",
+        body: `After building this project, here's my mental model of Go concurrency:
+
+• **Goroutines are cheap.** Use them for background work, parallel tasks, or anything that shouldn't block the caller. The Go runtime handles scheduling.
+
+• **Channels are for communication.** When two goroutines need to pass data, use a channel. It's safer than shared memory and makes the data flow visible in the code.
+
+• **\`select\` is for coordination.** Whenever a goroutine needs to listen to multiple channels — events and shutdown signals, timeouts and data — \`select\` is the tool.
+
+• **Mutexes are for shared state.** When multiple goroutines access the same data and channels aren't the right fit (like protecting a check-then-write operation), use \`sync.Mutex\`.
+
+• **Context propagation is for lifecycle.** Pass \`context.Context\` through your call chain so every goroutine knows when to stop.
+
+The Go proverb "Don't communicate by sharing memory; share memory by communicating" finally makes sense. Channels let you design concurrent systems where data flows through typed pipes instead of being guarded by locks everywhere.`,
+      },
+      {
+        heading: "What I'd Improve Next",
+        body: `If I continued working on this project, here's what I'd tackle:
+
+• **Add a worker pool** — right now there's a single worker goroutine. For higher throughput, I'd spin up multiple workers reading from the same channel.
+
+• **Integrate a real message broker** like RabbitMQ or Redis Pub/Sub to replace the in-memory channel, making the system work across multiple server instances.
+
+• **Add WebSocket notifications** — push real-time booking updates to connected clients using goroutines per connection.
+
+• **Write benchmarks** using Go's built-in \`testing.B\` to measure the actual throughput difference between sync and async modes under load.
+
+• **Add rate limiting** with a semaphore channel pattern — use a buffered channel as a counting semaphore to limit concurrent bookings.
+
+• **Explore \`errgroup\`** from \`golang.org/x/sync\` for managing groups of goroutines that return errors.
+
+Overall, this project transformed goroutines and channels from abstract concepts into practical tools I can reach for. The best way to learn concurrency is to build something where the performance difference is visible — and seeing a request drop from 808ms to 10ms made the value of Go's concurrency model impossible to ignore.`,
       },
     ],
   },
